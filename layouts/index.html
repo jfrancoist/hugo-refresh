@@ -1,9 +1,6 @@
 {{- define "main" -}}
 
     <section class="hero is-fullheight is-default is-bold">
-        
-        {{- partial "navbar.html" . -}}
-        {{- partial "navbar-clone.html" . -}}
 
         {{- $homepage   := .Site.Params.homepage -}}
         {{- $title      := index $homepage "title" -}}
@@ -16,7 +13,7 @@
                 <h1 class="title is-1 is-bold is-spaced">
                 {{- $title -}}
                 </h1>
-                {{- with $subtitle -}}
+                {{- range $subtitle -}}
                 <h2 class="subtitle is-5 is-muted">
                 {{ . }}
                 </h2>
@@ -28,9 +25,9 @@
                 </p>  */}}
             </div>
             <div class="column is-5 is-offset-1">
-                <figure class="image"> 
+                <figure class="image">
                 {{- $img := resources.Get $image -}}
-                <img src="{{- $img.Permalink | relURL -}}" 
+                <img src="{{- $img.Permalink | relURL -}}"
                      style="width:{{- .Site.Params.homepage.imageWidth -}}" alt="Myself">
                 </figure>
             </div>
